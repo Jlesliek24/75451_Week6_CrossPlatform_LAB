@@ -1,11 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import Input from './Input'; // Pastikan path-nya benar
 
 export default function App() {
+  const [name, setName] = useState('');
+  const [nim, setNim] = useState('');
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text style={{ marginBottom: 16 }}>
+        Nama: {name} | NIM: {nim}
+      </Text>
+
+      <Input
+        label="Name"
+        placeholder="Input your name"
+        value={name}
+        onChangeText={(text) => setName(text)}
+      />
+
+      <Input
+        label="NIM"
+        placeholder="Input your NIM"
+        value={nim}
+        onChangeText={(text) => setNim(text)}
+        keyboardType="numeric"
+      />
     </View>
   );
 }
@@ -13,8 +33,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    padding: 20,
     justifyContent: 'center',
   },
 });
